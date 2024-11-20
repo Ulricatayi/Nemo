@@ -12,7 +12,7 @@ module.exports = {
     if (!prompt) return sendMessage(senderId, { text: "Usage: gpt4 <question>" }, pageAccessToken);
 
     try {
-      const { data: { result } } = await axios.get(`https://joshweb.click/api/gpt-4o?q=${encodeURIComponent(prompt)}&uid=${senderId}`);
+      const { data: { result } } = await axios.get(`https://orc-six.onrender.com/gpt4-v2?ask=${encodeURIComponent(prompt)}&id=${senderId}`);
       sendMessage(senderId, { text: result }, pageAccessToken);
     } catch {
       sendMessage(senderId, { text: 'There was an error generating the content. Please try again later.' }, pageAccessToken);
