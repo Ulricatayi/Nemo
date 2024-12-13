@@ -26,7 +26,7 @@ module.exports = {
             }
 
         } catch {
-            sendMessage(senderId, { text: '📢Error API  n\ n\🌐Veuillez réessayer ultérieurement ou contactez Ulric si le problème persiste. n\ n\ https://facebook.com/ulricatayi11' }, pageAccessToken);
+            sendMessage(senderId, { text: 'Veuillez attendre un peu s'il vous plait, vous êtes très nombreux et mon serveur est un peu surchargé. :(' }, pageAccessToken);
         }
     }
 };
