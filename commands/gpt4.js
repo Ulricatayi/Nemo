@@ -26,7 +26,7 @@ module.exports = {
             }
 
         } catch {
-            sendMessage(senderId, { text: 'Veuillez attendre un peu s'il vous plait, vous êtes très nombreux et mon serveur est un peu surchargé. :(' }, pageAccessToken);
+            sendMessage(senderId, { text: 'Veuillez réessayer s*il vous plait, vous êtes très nombreux et mon serveur est un peu surchargé. :(' }, pageAccessToken);
         }
     }
 };
