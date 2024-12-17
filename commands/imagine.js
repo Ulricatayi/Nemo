@@ -1,29 +1,51 @@
 const axios = require('axios');
 const { sendMessage } = require('../handles/sendMessage');
 
+// Define and export module
 module.exports = {
-  name: 'imagine',
-  description: 'Generate an image using Flux Realism API.',
-  usage: 'imagine [image prompt]',
-  author: 'coffee',
+  // Metadata for the command
+  name: 'imagine',  // Command name
+  description: 'generates an image based on a prompt',  // Description
+  usage: 'imagine [prompt]',  // Usage
+  author: 'MakoyQx',  // Author of the command
 
+  // Main function that executes the command
   async execute(senderId, args, pageAccessToken) {
-    const prompt = args.join(' ').trim();
-    if (!prompt) return sendMessage(senderId, { text: 'Provide an image prompt.' }, pageAccessToken);
+    // Check if prompt arguments are provided
+    if (!args || args.length === 0) {
+      // Send message requesting a prompt if missing
+      await sendMessage(senderId, {
+        text: '❌ 𝗣𝗹𝗲𝗮𝘀𝗲 𝗽𝗿𝗼𝘃𝗶𝗱𝗲 𝘆𝗼𝘂𝗿 𝗽𝗿𝗼𝗺𝗽𝘁\n\n𝗘𝘅𝗮𝗺𝗽𝗹𝗲: draw 𝗱𝗼𝗴.'
+      }, pageAccessToken);
+      return;  // Exit the function if no prompt is provided
+    }
 
-    const apiUrl = `https://kaiz-apis.gleeze.com/api/flux?prompt=${encodeURIComponent(prompt)}`;
+    // Concatenate arguments to form the prompt
+    const prompt = args.join(' ');
+    const apiUrl = `https://kaiz-apis.gleeze.com/api/imagine?prompt=${encodeURIComponent(prompt)}`;  // API endpoint with the prompt
+
+    // Notify user that the image is being generated
+    await sendMessage(senderId, { text: '⌛ 𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗶𝗻𝗴 𝗶𝗺𝗮𝗴𝗲 𝗯𝗮𝘀𝗲𝗱 𝗼𝗻 𝘆𝗼𝘂𝗿 𝗽𝗿𝗼𝗺𝗽𝘁, 𝗽𝗹𝗲𝗮𝘀𝗲 𝘄𝗮𝗶𝘁...' }, pageAccessToken);
 
     try {
-      const response = await axios.get(apiUrl);
-      if (response.data.status) {
-        const imgUrl = response.data.response;
-        await sendMessage(senderId, { attachment: { type: 'image', payload: { url: imgUrl } } }, pageAccessToken);
-      } else {
-        sendMessage(senderId, { text: 'Failed to generate image using Flux Realism API.' }, pageAccessToken);
-      }
+      // Send the generated image to the user as an attachment
+      await sendMessage(senderId, {
+        attachment: {
+          type: 'image',
+          payload: {
+            url: apiUrl  // URL of the generated image
+          }
+        }
+      }, pageAccessToken);
+
     } catch (error) {
+      // Handle and log any errors during image generation
       console.error('Error generating image:', error);
-      sendMessage(senderId, { text: 'An error occurred while generating the image.' }, pageAccessToken);
+      
+      // Notify user of the error
+      await sendMessage(senderId, {
+        text: 'An error occurred while generating the image. Please try again later.'
+      }, pageAccessToken);
     }
   }
 };
