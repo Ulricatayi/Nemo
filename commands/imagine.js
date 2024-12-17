@@ -11,7 +11,7 @@ module.exports = {
     const prompt = args.join(' ').trim();
     if (!prompt) return sendMessage(senderId, { text: 'Provide an image prompt.' }, pageAccessToken);
 
-    const apiUrl = `https://api.kenliejugarap.com/flux-realism/?prompt=${encodeURIComponent(prompt)}`;
+    const apiUrl = `https://kaiz-apis.gleeze.com/api/flux?prompt=${encodeURIComponent(prompt)}`;
 
     try {
       const response = await axios.get(apiUrl);
