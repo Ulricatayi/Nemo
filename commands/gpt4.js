@@ -22,7 +22,7 @@ module.exports = {
 
             // send all msg parts
             for (const part of parts) {
-                await sendMessage(senderId, { text: '🌐𝙽𝙴𝙼𝙾 𝙰𝙸\n\n ▬▬▬▬▬▬▬▬▬▬' part '▬▬▬▬▬▬▬▬▬▬▬ \n ༆𝙾𝚠𝚗𝚎𝚛: 𝚄𝚕𝚛𝚒𝚌 𝙰𝚝𝚊𝚢𝚒' }, pageAccessToken);
+                await sendMessage(senderId, { text: part }, pageAccessToken);
             }
 
         } catch {
