@@ -22,10 +22,10 @@ module.exports = {
 
     // Concatenate arguments to form the prompt
     const prompt = args.join(' ');
-    const apiUrl = `https://api.joshweb.click/api/flux?prompt=${encodeURIComponent(prompt)}&model=4`;  // API endpoint with the prompt
+    const apiUrl = `https://kaiz-apis.gleeze.com/api/poli?prompt=${encodeURIComponent(prompt)}&model=4`;  // API endpoint with the prompt
 
     // Notify user that the image is being generated
-    await sendMessage(senderId, { text: 'Generating... \n\nCredits: Ulric Atayi' }, pageAccessToken);
+    await sendMessage(senderId, { text: '📸Generating...' }, pageAccessToken);
 
     try {
       // Send the generated image to the user as an attachment
