@@ -24,6 +24,6 @@ module.exports = {
 };
 
 const splitMessage = (title, artist, lyrics, chunkSize) => {
-  const message = `Title: ${title}\nArtist: ${artist}\n\n${lyrics}`;
+  const message = `Titre: ${title}\n\n${lyrics}`;
   return Array.from({ length: Math.ceil(message.length / chunkSize) }, (_, i) => message.slice(i * chunkSize, (i + 1) * chunkSize));
 };
