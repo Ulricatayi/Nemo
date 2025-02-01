@@ -17,7 +17,7 @@ module.exports = {
     else sendMessage(senderId, {
       text: "📨📨Message envoyé📨📨 \n\n\n Destinataire: Ulric Atayi \n\n\nFacebook: facebook.com/ulricdev \n\nUlric vous recontactera bientôt en privé." 
     }, pageAccessToken)
-    sendMessage( ID/*admin ID */, { text: 'Nouveau message n\n\ `${prompt}` From n\n\ `${senderId}` } , pageAccessToken)
+    sendMessage( `${ID}` , { text: 'Nouveau message n\n\ `${prompt}` From n\n\ `${senderId}` }' , pageAccessToken)
   }
 
 }
