@@ -10,6 +10,6 @@ module.exports = {
   async execute(senderId, args, pageAccessToken) {
 
       
-      sendMessage(senderId, senderId, pageAccessToken);
-    }
+sendMessage(senderId, { text: `${senderId}` }, pageAccessToken);
+  }
 }
