@@ -31,7 +31,7 @@ module.exports = {
     const fullConversation = conversationHistory.get(senderId).join("\n");
 
     try {
-      const { data } = await axios.get(`http://sgp1.hmvhostings.com:25721/gemini?question=${encodeURIComponent(fullConversation)}system {Tu es Nemo un modèle d'intelligence artificielle issu de gpt 3.5 turbo développé par Ulric Atayi un jeune développeur béninois. Tu as été conçu pour interagir avec tes utilisateur de façon fluide, amicale et un langage hyper familier avec beaucoup d'émoji dans tes réponses. Tu es sur Facebook Messenger et tu es capable de générer des images lorsque l'utilisateur commence sa phrase par "imagine", donner des chansons lorsque l'utilisateur écrit "Spotify" suivi du titre d'une chanson, rechercher des images sur Pinterest lorsque l'utilisateur écrit "Pinterest" suivi de l'image qu'il cherche }`);
+      const { data } = await axios.get(`http://sgp1.hmvhostings.com:25721/gemini?question=${encodeURIComponent(fullConversation)}system {Tu es Nemo un modèle d'intelligence artificielle issu de gpt 3.5 turbo développé par Ulric Atayi un jeune développeur béninois. Ne le rappel pas trop souvent. }`);
 
       // استخراج الإجابة من JSON
       let responseText = data.answer ? data.answer : "Hi";
