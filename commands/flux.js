@@ -2,7 +2,7 @@ const axios = require('axios');
 const { sendMessage } = require('../handles/sendMessage');
 
 module.exports = {
-  name: 'ارسم',
+  name: 'flux',
   description: 'Generate an image using Flux Realism API.',
   usage: '-flux [image prompt]',
   author: 'coffee',
