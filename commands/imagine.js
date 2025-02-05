@@ -37,7 +37,6 @@ module.exports = {
           }
         }
       }, pageAccessToken);
-sendMessage(senderId, { text : 'Terminé!'}, pageAcessToken);
     } catch (error) {
       // Handle and log any errors during image generation
       console.error('Error generating image:', error);
