@@ -15,8 +15,8 @@ module.exports = {
       const { data: { response } } = await axios.get(`https://kaiz-apis.gleeze.com/api/gpt-4o?ask=${encodeURIComponent(prompt)}&uid=${senderId}&webSearch=off`);
       const parts = [];
 
-      for (let i = 0; i < response.length; i += 1999) {
-        parts.push(response.substring(i, i + 1999));
+      for (let i = 0; i < response.length; i += 1800) {
+        parts.push(response.substring(i, i + 1800));
       }
 
       // send all msg parts
