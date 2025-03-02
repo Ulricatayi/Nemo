@@ -17,11 +17,10 @@ module.exports = {
 
       for (let i = 0; i < response.length; i += 1800) {
         parts.push(response.substring(i, i + 1800));
-      }
-        const name = '🤖𝗡𝗘𝗠𝗢 𝗔𝗜 n\ n\'
+                                               }
       // send all msg parts
       for (const part of parts) {
-        await sendMessage(senderId, { text: name + part }, pageAccessToken);
+        await sendMessage(senderId, { text: part }, pageAccessToken);
       }
       sendMessage(senderId, { text: 'Partagez ce lien avec vos amis :🌐facebook.com/nemogpt' }, pageAccessToken);
     } catch {
