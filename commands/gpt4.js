@@ -21,9 +21,9 @@ module.exports = {
 
       // send all msg parts
       for (const part of parts) {
-        await sendMessage(senderId, { text: `𝗡𝗘𝗠𝗢 𝗔𝗜` + part }, pageAccessToken);
+        await sendMessage(senderId, { text: `🤖𝗡𝗘𝗠𝗢 𝗔𝗜 n\ n\` + part }, pageAccessToken);
       }
-      sendMessage(senderId, { text: `Partagez ce lien avec vos amis : n\ n\ 🌐facebook.com/nemogpt` }, pageAccessToken);
+      sendMessage(senderId, { text: `Partagez ce lien avec vos amis : `n\ n\ `🌐facebook.com/nemogpt` }, pageAccessToken);
     } catch {
       sendMessage(senderId, { text: 'Veuillez réessayer s\'il vous plait, vous êtes très nombreux et mon serveur est un peu surchargé. :(' }, pageAccessToken);
     }
