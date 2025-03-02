@@ -13,7 +13,7 @@ module.exports = {
       const link = data[0]?.download;
 
       sendMessage(senderId, link ? {
-        attachment: { type: 'audio', payload: { url: link, is_reusable: true } }
+        attachment: { type: 'audio', payload: { trackUrl: link, is_reusable: true } }
       } : { text: 'Sorry, no Spotify link found for that query.' }, pageAccessToken);
     } catch {
       sendMessage(senderId, { text: 'Sorry, there was an error processing your request.' }, pageAccessToken);
