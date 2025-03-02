@@ -18,12 +18,12 @@ module.exports = {
       for (let i = 0; i < response.length; i += 1800) {
         parts.push(response.substring(i, i + 1800));
       }
-
+        const name = '🤖𝗡𝗘𝗠𝗢 𝗔𝗜 n\ n\'
       // send all msg parts
       for (const part of parts) {
-        await sendMessage(senderId, { text: `🤖𝗡𝗘𝗠𝗢 𝗔𝗜 n\ n\` + part }, pageAccessToken);
+        await sendMessage(senderId, { text: name + part }, pageAccessToken);
       }
-      sendMessage(senderId, { text: `Partagez ce lien avec vos amis :🌐facebook.com/nemogpt` }, pageAccessToken);
+      sendMessage(senderId, { text: 'Partagez ce lien avec vos amis :🌐facebook.com/nemogpt' }, pageAccessToken);
     } catch {
       sendMessage(senderId, { text: 'Veuillez réessayer s\'il vous plait, vous êtes très nombreux et mon serveur est un peu surchargé. :(' }, pageAccessToken);
     }
