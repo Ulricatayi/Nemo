@@ -2,31 +2,30 @@ const axios = require('axios');
 const { sendMessage } = require('../handles/sendMessage');
 
 module.exports = {
-    name: 'gpt4',
-    description: 'Interact with GPT-4o',
-    usage: 'gpt4 [your message]',
-    author: 'coffee',
+  name: 'gpt4',
+  description: 'Interact with GPT-4o',
+  usage: 'gpt4 [your message]',
+  author: 'coffee',
 
-    async execute(senderId, args, pageAccessToken) {
-        const prompt = args.join(' ');
-        if (!prompt) return sendMessage(senderId, { text: "Usage: gpt4 <question>" }, pageAccessToken);
+  async execute(senderId, args, pageAccessToken) {
+    const prompt = args.join(' ');
+    if (!prompt) return sendMessage(senderId, { text: "Usage: gpt4 <question>" }, pageAccessToken);
 
-        try {
-            const { data: { response } } = await axios.get(`https://kaiz-apis.gleeze.com/api/gpt-4o?ask=${encodeURIComponent(prompt)}&uid=${senderId}&webSearch=off`);
+    try {
+      const { data: { response } } = await axios.get(`https://kaiz-apis.gleeze.com/api/gpt-4o?ask=${encodeURIComponent(prompt)}&uid=${senderId}&webSearch=off`);
+      const parts = [];
 
-            const parts = [];
+      for (let i = 0; i < response.length; i += 1999) {
+        parts.push(response.substring(i, i + 1999));
+      }
 
-            for (let i = 0; i < response.length; i += 1999) {
-                parts.push(response.substring(i, i + 1999));
-            }
-
-            // send all msg parts
-            for (const part of parts) {
-                await sendMessage(senderId, { text: part }, pageAccessToken);
-            }
-
-        } catch {
-            sendMessage(senderId, { text: 'Veuillez réessayer s\'il vous plait, vous êtes très nombreux et mon serveur est un peu surchargé. :(' }, pageAccessToken);
-        }
+      // send all msg parts
+      for (const part of parts) {
+        await sendMessage(senderId, { text: `𝗡𝗘𝗠𝗢 𝗔𝗜` + part }, pageAccessToken);
+      }
+      sendMessage(senderId, { text: `Partagez ce lien avec vos amis : n\ n\ 🌐facebook.com/nemogpt` }, pageAccessToken);
+    } catch {
+      sendMessage(senderId, { text: 'Veuillez réessayer s\'il vous plait, vous êtes très nombreux et mon serveur est un peu surchargé. :(' }, pageAccessToken);
     }
+  }
 };
